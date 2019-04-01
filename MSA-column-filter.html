@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+    <link rel="stylesheet" href="subseq.css">
+    <title>MSA-column-filter</title>
+</head>
+<body>
+  <div class="container">
+      <div class="jumbotron">
+          <h1><b>MSA-column-filter</b></h1>
+          <p>version 1.00</p>
+          <p>Please enter the sequences and % of gaps in alignment column.</p>
+
+          <form>
+            % of gaps in alignment column:<br>
+            <input type="text" id="gaps" name="gaps">
+            <br>
+            
+          </form>
+          <br>
+          <textarea id="alignTextarea" rows="4" cols="70" placeholder="FASTA sequence alignment"></textarea>
+          <br>
+          <button type="button" onclick="execute()">Submit</button>
+          <div class="container"></div>
+              <p id="demo"></p>
+          </div>
+          <p id="seqto"></p>
+
+      </div>
+  </div>
+  <footer>
+
+    <div>
+      <i class="fas fa-user-astronaut"></i><br>Created by<br> Marcin Gradowski 
+    </div>
+    <div>
+      <a href="https://github.com/MarcGrad/subseq-simple"><i class="fab fa-github-alt"></i><br>Github</a> 
+    </div>
+    <div>
+      <a href="https://www.researchgate.net/profile/Marcin_Gradowski2"><i class="fab fa-researchgate"></i><br>ReaserachGate</a>
+    </div>
+  </footer>
+  <script src="MSA-column-filter.js"></script>
+</body>
+</html>
