@@ -1,5 +1,4 @@
-let example =
-`>gi|769980658|ref|WP_045096643.1| hypothetical protein [Legionella fallonii]
+let example = `>gi|769980658|ref|WP_045096643.1| hypothetical protein [Legionella fallonii]
 --------------------------------------------------------MNYK
 ITEHY-ARGEEKFIAEFNELNDARFFMTKKSSIDDVERKKVIYRLYDDH-ELLHELNKEN
 ISITHAKYAEGNGDFNNAVPFIFQVMIKTMDSLERKTIAQFNDKNDANLFVVCKFEDDNT
@@ -298,136 +297,12 @@ H-SW--VKDDEDK-----KK
 VTEQY-VGGSDIPCAEFSKISDARLFVDNKLEADRRLKVRVTYRIYDGH-TVLEEKNQDS
 LS----------------------------------------------------------
 ------------------------TTSTQTSSMQTTSTSSS-----PSPFSTTPKPAGMP
-PSRWASVLKDEKEGKK----`;
+PSRWASVLKDEKEGKK----'`;
 
 function printExample() {
-    document.getElementById('alignTextarea').innerHTML = example;
-    document.getElementById('gaps').value = '20';
-}
+    document.getElementById('demo').innerHTML = example;
+    };
+
 function print() {
     printExample();
-}
-let column = '';
-
-
-function getMSA() {
-    // console.log('TextArea: ', document.querySelector('#alignTextarea').value);
-    return document.querySelector('#alignTextarea').value;
-}
-function getGaps() {
-    // console.log('getGaps: ', document.querySelector('#gaps').value);
-    return document.querySelector('#gaps').value;
-}
-function splitAlignment() {
-    let alignmentParts = getMSA().split('>');
-    // console.log(alignmentParts.slice(1));
-    return alignmentParts.slice(1);
-}
-function addBird() {
-    let splitedAlignmentWithBirds = splitAlignment().map(function(e) {return '>' + getGaps() + '%gapsCut\|' + e});
-    // console.log('addBird: ', splitedAlignmentWithBirds)
-    return splitedAlignmentWithBirds;
-}
-function splitAlignmentElements() {
-    let splitedAlignmentElements = addBird().map(function(e) {return e.split('\n')});
-    // console.log('splitedAlignmentElements ',splitedAlignmentElements)
-    return splitedAlignmentElements;
-}
-function connectSequenceAndAddTooHeader() {
-    return splitAlignmentElements().map(element => {
-        const header = element.splice(0,1);
-        const sequence = element.join('');
-        return [header, sequence];
-
-    });
-}
-function prepareColumns() {
-    let columns = [];
-    for (i = 0; i < connectSequenceAndAddTooHeader()[0][1].length; i++) { 
-        let column = '';
-        connectSequenceAndAddTooHeader().forEach(element => {
-            column += element[1][i];
-        });
-        columns.push(column);
-    // console.log(columns)
-    }
-    return columns;
-}
-function calculateColumnsPercentOfGaps() {
-    const indexes = [];
-    
-    //po liście sekw3encji
-    prepareColumns().forEach((element, i) => {
-        console.log('e',element);
-        // console.log('oooooooooooooo')
-        let gapsCounter = 0;
-        //po aminokwasach
-        element.split('').forEach(character => {
-            //console.log('c',character);
-            if (character === '-') {
-                gapsCounter += 1;
-            }
-            // console.log(gapsCounter);
-        });            
-        let score = (100 * gapsCounter) / element.length;
-        let threshold = 100 - getGaps();
-        // console.log('score',score);
-        // console.log('treshold',treshold);
-        if (score >= threshold) {
-            // console.log('#############################', i);
-            indexes.push(i);
-        }
-    });
-    // console.log(indexes)
-    return indexes;
-}
-function removePositionsWithExceededThreshold() {
-    // console.log(connectSequenceAndAddTooHeader());
-    let indexes = calculateColumnsPercentOfGaps().reverse();
-    // console.log(indexes);
-    return connectSequenceAndAddTooHeader().map(element => {
-        let header = element[0];
-        let sequence = element[1].split('');
-        // console.log(sequence);
-        indexes.forEach(index => {
-            sequence.splice(index, 1);
-        });
-        return [header, sequence.join('')];
-        // console.log(newHeaderAndSequence);
-    });
-}
-function connectProcessedSequenceParts() {
-    fasta_sequences = []
-    removePositionsWithExceededThreshold().map(element => { 
-        fasta = element[0] + '<br>' + element[1] + '<br>';
-        fasta_sequences.push(fasta)
-    });
-    return fasta_sequences;
-}
-function stickFasta() {
-    return connectProcessedSequenceParts().join([separator = '']);
-}
-function printResult() {
-    document.getElementById('demo').innerHTML = stickFasta();
-}
-
-
-
-
-function execute() {
-    printResult();
-    //console.log('wynik', foo);
-} 
-
-function copyToClipboard() {
-    /* Get the text field */
-    let copyText = document.getElementById("demo");
-  
-    /* Select the text field */
-    copyText.select();
-  
-    /* Copy the text inside the text field */
-    document.execCommand("copy");
-     /* Alert the copied text */
-     alert("Copied the text: " + copyText.value);
 }

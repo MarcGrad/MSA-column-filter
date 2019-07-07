@@ -7,29 +7,32 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
     <link rel="stylesheet" href="subseq.css">
-    <title>MSA-column-filter</title>
+    <title>MSF-position-filter</title>
 </head>
 <body>
   <div class="container">
       <div class="jumbotron">
-          <h1><b>MSA-column-filter</b></h1>
-          <p>version 1.00</p>
-          <p>Please enter the sequences and % of gaps in alignment column.</p>
+          <h1><b>MSF-position-filter</b></h1>
+            <p>version 1.00</p>
+          <p></p>
 
           <form>
-            % of gaps in alignment column:<br>
-            <input type="text" id="gaps" name="gaps">
-            <br>
+            % of gaps in column to delete:
+              <br>
+              <input type="text" id="gaps" name="gaps" >
+              <br>
             
           </form>
-          <br>
-          <textarea id="alignTextarea" rows="4" cols="70" placeholder="FASTA sequence alignment"></textarea>
+            FASTA sequence alignment:  
+            <br>
+          
+          <textarea id="alignTextarea" rows="4" cols="70"></textarea>
           <br>
           <button type="button" onclick="execute()">Submit</button>
-          <div class="container"></div>
-              <p id="demo"></p>
+          <button type="button" onclick="print()">Example</button>
+          <button type="button" onclick="copyToClipboard()">Copy</button>
+          <div id="demo">
           </div>
-          <p id="seqto"></p>
 
       </div>
   </div>

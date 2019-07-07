@@ -1,0 +1,44 @@
+body div {
+    align-items: center;
+}
+
+footer {
+    display: grid;
+    grid-template-columns: auto auto auto;
+    justify-content: space-evenly;
+    background-color: yellowgreen;
+    padding: 20px 0;
+    color: black;
+}
+body footer div {
+    text-align: center;
+    align-items: center;
+}
+body footer a {
+    color:black;
+    text-decoration-line: none;
+}
+body footer a:visited {
+    color: black;
+    text-decoration-line: none;
+
+}
+
+body footer a:hover {
+    color: rebeccapurple;
+    text-decoration-line: none;
+
+}
+body footer i {
+    font-size: 50px; 
+}
+#alignTextarea {
+    font-size: 12px;
+    font-family: 'Courier New', Courier, monospace;
+}
+#demo {
+    word-break: break-all;
+    line-break: pre-line;
+    font-size: 12px;
+    font-family: 'Courier New', Courier, monospace;
+}
